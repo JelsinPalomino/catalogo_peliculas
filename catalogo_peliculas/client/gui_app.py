@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
+from model.pelicula_dao import crear_tabla, borrar_table
+
 
 def barra_menu(root):
     barra_menu = tk.Menu(root)
@@ -8,8 +10,8 @@ def barra_menu(root):
     menu_inicio = tk.Menu(barra_menu, tearoff=0)
     barra_menu.add_cascade(label='Inicio', menu=menu_inicio)
 
-    menu_inicio.add_command(label='Crear un registro en DB')
-    menu_inicio.add_command(label='Eliminar un registro en DB')
+    menu_inicio.add_command(label='Crear un registro en DB', command=crear_tabla)
+    menu_inicio.add_command(label='Eliminar un registro en DB', command=borrar_table)
     menu_inicio.add_command(label='Salir', command=root.destroy)
 
     barra_menu.add_cascade(label='Consultas')
