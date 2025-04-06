@@ -124,3 +124,23 @@ class Frame(tk.Frame):
         self.tabla.heading('#3', text='GÉNERO')
 
         self.tabla.insert('',0, text='1', values=('Los Vengadores', '2.35', 'Acción'))
+
+        # Boton Editar
+        self.boton_editar = tk.Button(self, text='Editar')
+        self.boton_editar.config(width=20, 
+                                font=('Arial', 12, 'bold'), 
+                                fg='#DAD5D6', 
+                                bg='#158645', 
+                                cursor='hand2', 
+                                activebackground='#35BD6F')
+        self.boton_editar.grid(row=5, column=0, padx=10, pady=10)
+
+        # Boton de Eliminar
+        self.boton_eliminar = tk.Button(self, text='Eliminar')
+        self.boton_eliminar.config(width=20, 
+                                font=('Arial', 12, 'bold'), 
+                                fg='#DAD5D6', 
+                                bg='#BD152E', 
+                                cursor='hand2', 
+                                activebackground='#E15370')
+        self.boton_eliminar.grid(row=5, column=1, padx=10, pady=10)
