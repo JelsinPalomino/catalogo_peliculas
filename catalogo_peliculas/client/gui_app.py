@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 
 def barra_menu(root):
     barra_menu = tk.Menu(root)
@@ -24,6 +25,7 @@ class Frame(tk.Frame):
 
         self.campos_pelicula()
         self.deshabilitar_campos()
+        self.tabla_peliculas()
 
     def campos_pelicula(self):
         # Labels de cada campo
@@ -63,7 +65,7 @@ class Frame(tk.Frame):
                                 bg='#158645', 
                                 cursor='hand2', 
                                 activebackground='#35BD6F')
-        self.boton_nuevo.grid(row=4, column=0, padx=10, pady=10)
+        self.boton_nuevo.grid(row=3, column=0, padx=10, pady=10)
 
         self.boton_guardar = tk.Button(self, text='Guardar', command=self.guardar_datos)
         self.boton_guardar.config(width=20, 
@@ -72,7 +74,7 @@ class Frame(tk.Frame):
                                 bg='#1658A2', 
                                 cursor='hand2', 
                                 activebackground='#3586DF')
-        self.boton_guardar.grid(row=4, column=1, padx=10, pady=10)
+        self.boton_guardar.grid(row=3, column=1, padx=10, pady=10)
 
         self.boton_cancelar = tk.Button(self, text='Cancelar', command=self.deshabilitar_campos)
         self.boton_cancelar.config(width=20, 
@@ -81,7 +83,7 @@ class Frame(tk.Frame):
                                 bg='#BD152E', 
                                 cursor='hand2', 
                                 activebackground='#E15370')
-        self.boton_cancelar.grid(row=4, column=2, padx=10, pady=10)
+        self.boton_cancelar.grid(row=3, column=2, padx=10, pady=10)
 
     def habilitar_campos(self):
         self.mi_nombre.set('')
@@ -110,3 +112,15 @@ class Frame(tk.Frame):
     def guardar_datos(self):
         
         self.deshabilitar_campos()
+
+    def tabla_peliculas(self):
+
+        self.tabla = ttk.Treeview(self, column=('Nombre', 'Duración', 'Género'))
+        self.tabla.grid(row=4, column=0, columnspan=4)
+
+        self.tabla.heading('#0', text='ID')
+        self.tabla.heading('#1', text='NOMBRE')
+        self.tabla.heading('#2', text='DURACIÓN')
+        self.tabla.heading('#3', text='GÉNERO')
+
+        self.tabla.insert('',0, text='1', values=('Los Vengadores', '2.35', 'Acción'))
