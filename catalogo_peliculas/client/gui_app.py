@@ -65,7 +65,7 @@ class Frame(tk.Frame):
                                 activebackground='#35BD6F')
         self.boton_nuevo.grid(row=4, column=0, padx=10, pady=10)
 
-        self.boton_guardar = tk.Button(self, text='Guardar')
+        self.boton_guardar = tk.Button(self, text='Guardar', command=self.guardar_datos)
         self.boton_guardar.config(width=20, 
                                 font=('Arial', 12, 'bold'), 
                                 fg='#DAD5D6', 
@@ -106,3 +106,7 @@ class Frame(tk.Frame):
 
         self.boton_guardar.config(state='disabled')
         self.boton_cancelar.config(state='disabled')
+
+    def guardar_datos(self):
+        
+        self.deshabilitar_campos()
