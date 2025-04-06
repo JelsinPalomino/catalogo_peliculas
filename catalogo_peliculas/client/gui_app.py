@@ -122,12 +122,15 @@ class Frame(tk.Frame):
 
         guardar(pelicula)
 
+        self.tabla_peliculas()
+
         # Deshabilita los campos
         self.deshabilitar_campos()
 
     def tabla_peliculas(self):
         # Recuperar la lista de peliculas
         self.lista_peliculas = listar()
+        self.lista_peliculas.reverse()
 
         self.tabla = ttk.Treeview(self, column=('Nombre', 'Duración', 'Género'))
         self.tabla.grid(row=4, column=0, columnspan=4)
