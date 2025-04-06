@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from model.pelicula_dao import crear_tabla, borrar_table
-from model.pelicula_dao import Pelicula, guardar
+from model.pelicula_dao import Pelicula, guardar, listar
 
 def barra_menu(root):
     barra_menu = tk.Menu(root)
@@ -126,6 +126,8 @@ class Frame(tk.Frame):
         self.deshabilitar_campos()
 
     def tabla_peliculas(self):
+        # Recuperar la lista de peliculas
+        self.lista_peliculas = listar()
 
         self.tabla = ttk.Treeview(self, column=('Nombre', 'Duración', 'Género'))
         self.tabla.grid(row=4, column=0, columnspan=4)
@@ -135,7 +137,9 @@ class Frame(tk.Frame):
         self.tabla.heading('#2', text='DURACIÓN')
         self.tabla.heading('#3', text='GÉNERO')
 
-        self.tabla.insert('',0, text='1', values=('Los Vengadores', '2.35', 'Acción'))
+        # Listar la lista de peliculas
+        for p in self.lista_peliculas:
+            self.tabla.insert('',0, text=p[0], values=(p[1], p[2], p[3]))
 
         # Boton Editar
         self.boton_editar = tk.Button(self, text='Editar')
